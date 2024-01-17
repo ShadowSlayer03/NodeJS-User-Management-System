@@ -1,0 +1,57 @@
+/* CSS FOR THE HOME TABLE IS PRESENT AT assets/fresh-bootstrap-table.css */
+/* THESE ARE THE ADDITIONAL CSS FOR THE SAME TABLE AND OTHER PAGES */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+#main{
+    width: 100%;
+    padding-bottom: 4vw;
+}
+
+.navbar{
+    margin-bottom: 2vw;
+}
+
+.navbar-brand{
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.navbar-brand img{
+    height: 2.5vw;
+}
+
+.nav-item .nav-link{
+    padding-right: 5vw;
+}
+
+.form-control1::placeholder{
+color: #0d6efd;
+}
+
+.table-action i{
+    font-size: 15px;
+    padding-right: 0.2vw;
+}
+
+.page-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.fresh-table[class*=full-color-] .btn .caret{
+    opacity: 0;
+}
+
