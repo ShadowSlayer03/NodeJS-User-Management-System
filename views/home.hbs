@@ -1,0 +1,121 @@
+<div id="main">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="/images/nodes_white.png" alt="logo"> UserNodeX</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/adduser">Add User</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {{#if removedUser}}
+  <div class="alert alert-primary alert-dismissible show" role="alert">
+    User has been removed successfully!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{{/if}}
+
+
+    <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="fresh-table full-color-blue">
+        <!--
+          Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+          Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+        -->
+          <div class="toolbar">
+            <button id="alertBtn" class="btn btn-default">All Users </button>
+          </div>
+
+          <table id="fresh-table" class="table">
+            <thead>
+              <th data-field="id">ID</th>
+              <th data-field="name" data-sortable="true">First Name</th>
+              <th data-field="last-name" data-sortable="true">Last Name</th>
+              <th data-field="salary" data-sortable="true">Email</th>
+              <th data-field="country" data-sortable="true">Phone</th>
+              <th data-field="actions">Actions</th>
+            </thead>
+            <tbody>
+              {{#each result}}
+              <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td>
+                  <a rel="tooltip" title="View" class="table-action like" href="/viewuser/{{this.id}}" title="View">
+                    <i class="text-warning bi bi-eye"></i>
+                  </a>
+                  <a rel="tooltip" title="Edit" class="table-action edit" href="/edituser/{{this.id}}" title="Edit">
+                    <i class="text-warning bi bi-pencil"></i>
+                  </a>
+                  <a rel="tooltip" title="Delete" class="table-action remove" href="/{{this.id}}" title="Delete">
+                    <i class="text-warning bi bi-person-x"></i>
+                  </a>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary">© 2023 UserNodeX</p>
+
+    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="/adduser" class="nav-link px-2 text-body-secondary">Add User</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+    var $table = $('#fresh-table')
+
+$(function () {
+  $table.bootstrapTable({
+    classes: 'table table-hover table-striped',
+    toolbar: '.toolbar',
+
+    search: true,
+    showRefresh: true,
+    showToggle: true,
+    showColumns: true,
+    pagination: true,
+    striped: true,
+    sortable: true,
+    pageSize: 8,
+    pageList: [8, 10, 25, 50, 100],
+
+    formatShowingRows: function (pageFrom, pageTo, totalRows) {
+      return ''
+    },
+    formatRecordsPerPage: function (pageNumber) {
+      return pageNumber + ' rows visible'
+    }
+  })
+})
+</script>
+

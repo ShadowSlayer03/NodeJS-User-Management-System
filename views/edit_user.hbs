@@ -1,0 +1,107 @@
+<style>
+    .registration-form{ padding: 50px 0; } 
+  
+  .registration-form form{
+  background-color: #fff; max-width: 600px; margin: auto; padding: 50px 70px;
+  border-top-left-radius: 30px; border-top-right-radius: 30px; box-shadow: 6px
+  0px 10px rgba(0, 0, 0, 0.25); } 
+
+  .registration-form .form-icon{ 
+    text-align: center; border-radius: 50%; font-size: 40px; color:
+  white; width: 100px; height: 100px; margin: auto; margin-bottom: 50px;
+  line-height: 100px; background-image: url("/images/edit-user.png");
+  background-position: center; background-size: cover;} 
+  
+  .registration-form .item{ border-radius: 20px; margin-bottom: 25px; padding: 10px 20px; }
+
+  .registration-form .create-account{ border-radius: 30px; padding: 10px 20px;
+  font-size: 18px; font-weight: bold; background-color: #5791ff; border: none;
+  color: white; margin-top: 20px; } 
+
+  @media (max-width: 576px) {
+  .registration-form form{ padding: 50px 20px; } 
+  .registration-form .form-icon{
+  width: 70px; height: 70px; font-size: 30px; line-height: 70px; } 
+  }
+
+  .fade{
+    opacity: 1;
+  }
+
+  .alert{
+    margin-top: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.alert-dismissible .btn-close{
+    position: absolute;
+    top: 10%;
+    right: 0%;
+    z-index: 2;
+    padding: 1.25rem 1rem;
+}
+</style>
+
+
+{{#if mesg}}
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    {{{mesg}}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{{/if}}
+
+{{#each result}}
+<div class="registration-form">
+  <form method="POST" action="/edituser/{{this.id}}" onsubmit="return validateForm()">
+  {{> user-form}}
+  <div class="form-group">
+      <button type="submit" class="btn btn-block create-account">Edit User</button>
+  </div>
+  </form>
+</div>
+{{/each}}
+
+
+<div class="container">
+  <footer
+    class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+  >
+    <p class="col-md-4 mb-0 text-body-secondary">© 2023 UserNodeX</p>
+
+    <a
+      href="/"
+      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+    >
+      <svg class="bi me-2" width="40" height="32"><use
+          xlink:href="#bootstrap"
+        ></use></svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a
+          href="/"
+          class="nav-link px-2 text-body-secondary"
+        >Home</a></li>
+      <li class="nav-item"><a
+          href="/adduser"
+          class="nav-link px-2 text-body-secondary"
+        >Add User</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+<script>
+  $(document).ready(function(){ $('#phone-number').mask('0000-0000'); })
+  function validateForm() { 
+  var firstName = document.getElementById("first_name").value;
+  var lastName = document.getElementById("last_name").value; 
+  var email = document.getElementById("email").value; 
+  var phone = document.getElementById("phone").value; 
+  if (firstName === "" || lastName === "" || email === "" || phone === "") 
+  { alert("Please fill out all required fields."); return false; } 
+  return true; 
+  }
+</script>
