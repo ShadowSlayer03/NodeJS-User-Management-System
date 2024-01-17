@@ -1,4 +1,4 @@
-# Node User Management System
+# Node User Management System 🚀🔥
 
 This project is a simple User Management System built with Node.js and MySQL.
 
