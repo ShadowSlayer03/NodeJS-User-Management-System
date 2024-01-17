@@ -20,15 +20,6 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 // Connection Pool
-var pool = mysql.createPool({
-    connectionLimit: 100,
-    port: 3307,
-    host     : process.env.DB_HOST,
-    user     : process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password : process.env.DB_PASS
-});
-
 const routes = require('./server/routes/user');
 app.use('/',routes);
 
