@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 require('dotenv').config()
 
-const port = 3000 || process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT || 3000;
 const app = express();
 
 // Body Parser as middleware
@@ -33,5 +33,5 @@ const routes = require('./server/routes/user');
 app.use('/',routes);
 
 app.listen(port, () => {
-    console.log("App running successfully!");
+    console.log(`App running successfully on port ${port}!`);
 });
