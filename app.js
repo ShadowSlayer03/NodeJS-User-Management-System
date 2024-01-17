@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 require('dotenv').config()
 
-const port = 3000;
+const port = 3000 || process.env.PORT;
 const app = express();
 
 // Body Parser as middleware
