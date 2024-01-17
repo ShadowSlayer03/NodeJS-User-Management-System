@@ -3,7 +3,7 @@ const table_name = "user";
 
 var pool = mysql.createPool({
     connectionLimit: 100,
-    port: 3307,
+    port: process.env.DB_PORT,
     host     : process.env.DB_HOST,
     user     : process.env.DB_USER,
     database: process.env.DB_NAME,
